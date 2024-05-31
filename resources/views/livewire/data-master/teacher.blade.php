@@ -1,5 +1,5 @@
 <x-app-layout>
-    @section('title', 'Users')
+    @section('title', 'Data Guru')
     <div class="row">
         <div class="col-xl-12">
             <div class="nav-align-top mb-4">
@@ -8,7 +8,7 @@
                         <div class="row mb-2">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="card-header d-flex justify-content-between align-items-center">
-                                    <h4 class="card-title">Data Users</h4>
+                                    <h4 class="card-title">Data Guru dan Tenaga Kependidikan</h4>
                                     <span><input id="text" type="text" class="form-control" wire:model="search"
                                             placeholder="Search" autocomplete="search" /></span>
                                 </div>
@@ -21,22 +21,22 @@
                                                         <tr>
                                                             <th>#</th>
                                                             <th>Name</th>
-                                                            <th>Email</th>
+                                                            <th>L/P</th>
+                                                            <th>NIP</th>
                                                             <th>NUPTK</th>
-                                                            <th>Status</th>
                                                             <th>Created At</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($users as $user)
+                                                        @foreach ($teachers as $teacher)
                                                             <tr>
                                                                 <td>{{ $loop->iteration }}</td>
-                                                                <td>{{ $user->name }}</td>
-                                                                <td>{{ $user->email }}</td>
-                                                                <td>{{ $user->nuptk }}</td>
-                                                                <td>{{ $user->jabatan }}</td>
-                                                                <td>{{ $user->created_at->format('d-m-Y') }}</td>
+                                                                <td>{{ strtoupper($teacher->nama) }}</td>
+                                                                <td>{{ $teacher->jenis_kelamin }}</td>
+                                                                <td>{{ $teacher->nip }}</td>
+                                                                <td>{{ $teacher->nuptk }}</td>
+                                                                <td>{{ $teacher->created_at->format('d-m-Y') }}</td>
                                                                 <td>
                                                                     <a class="btn btn-primary btn-sm"
                                                                         href="#">Edit</a>
@@ -52,7 +52,7 @@
                             </div>
                         </div>
                     </div>
-                    {{ $users->links() }}
+                    {{ $teachers->links() }}
                 </div>
 
             </div>
